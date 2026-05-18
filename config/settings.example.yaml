@@ -1,0 +1,27 @@
+# 복사해서 config/settings.yaml 로 사용하세요. (settings.yaml 은 .gitignore 처리됨)
+# API 키는 가능하면 환경변수로 두는 것을 권장합니다.
+
+brand:
+  handle: "@your_handle"          # footer 기본값으로 쓰임
+  default_format: "square_basic"
+
+ai:
+  provider: "gemini"              # gemini | openai
+
+gemini:
+  # 환경변수 GEMINI_API_KEY(없으면 GOOGLE_API_KEY) 우선. 키는 파일보다
+  # 환경변수 권장. text_model 빈값이면 기본 gemini-2.0-flash 사용.
+  api_key_env: "GEMINI_API_KEY"
+  api_key: ""
+  text_model: ""                  # 빈값=gemini-2.5-flash. 예: gemini-flash-latest
+  image_model: "imagen-3.0-generate-002"   # P7
+
+openai:                           # ai.provider=openai 일 때만 사용
+  api_key_env: "OPENAI_API_KEY"
+  api_key: ""
+  text_model: ""                  # 예: gpt-4o-mini
+  image_model: "gpt-image-1"
+
+paths:
+  output_dir: "output"
+  cache_dir: "assets/cache"

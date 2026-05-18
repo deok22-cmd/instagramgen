@@ -1,0 +1,145 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  인스타그램 디자인 포맷 카탈로그  (P2)
+#
+#  좌표계: 캔버스 좌상단 (0,0), 단위 px.
+#  zone.bind : 콘텐츠의 어떤 필드를 이 존에 채울지 지정
+#     topic | title | body | bullets | footer | page | hashtags | caption
+#  align  : left | center | right        (가로 정렬)
+#  valign : top  | middle | bottom       (박스 안 세로 정렬)
+#  color  : #RRGGBB 또는 #RRGGBBAA
+#  background.mode : solid | gradient   (P6에서 image, P7에서 ai 추가)
+# ─────────────────────────────────────────────────────────────────────────────
+
+defaults:
+  font_family: "Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif"
+  line_height: 1.3
+  font_weight: 400
+  color: "#FFFFFF"
+
+formats:
+
+  # 1) 정사각 정보 포스트 — 가장 범용적인 피드 카드
+  square_basic:
+    name: "정사각 기본 정보 카드"
+    description: "1080x1080. 주제·제목·본문·푸터. 가장 범용적인 피드용."
+    width: 1080
+    height: 1080
+    kind: single
+    background:
+      mode: gradient
+      from: "#6D5DF6"
+      to: "#1E1B4B"
+      angle: 135
+    zones:
+      - { name: topic,  bind: topic,  x: 96, y: 132, w: 888, h: 56,
+          align: left, valign: top, font_size: 34, font_weight: 700,
+          color: "#C7D2FE", letter_spacing: 2, max_lines: 1 }
+      - { name: title,  bind: title,  x: 96, y: 212, w: 888, h: 470,
+          align: left, valign: top, font_size: 86, font_weight: 800,
+          line_height: 1.16, max_lines: 5 }
+      - { name: body,   bind: body,   x: 96, y: 706, w: 888, h: 250,
+          align: left, valign: top, font_size: 38, font_weight: 400,
+          line_height: 1.42, color: "#E5E7EBE6", max_lines: 5 }
+      - { name: footer, bind: footer, x: 96, y: 972, w: 888, h: 48,
+          align: left, valign: bottom, font_size: 28, font_weight: 600,
+          color: "#FFFFFFBF", max_lines: 1 }
+
+  # 2) 정사각 인용구 — 큰 문장 중앙 배치
+  square_quote:
+    name: "정사각 인용구"
+    description: "1080x1080. 큰 인용 문구 + 출처. body→인용, footer→출처."
+    width: 1080
+    height: 1080
+    kind: single
+    background:
+      mode: solid
+      color: "#0F172A"
+    zones:
+      - { name: mark,   bind: topic,  x: 120, y: 150, w: 840, h: 60,
+          align: center, valign: top, font_size: 90, font_weight: 800,
+          color: "#38BDF8", max_lines: 1 }
+      - { name: quote,  bind: body,   x: 120, y: 250, w: 840, h: 520,
+          align: center, valign: middle, font_size: 64, font_weight: 800,
+          line_height: 1.28, max_lines: 7 }
+      - { name: author, bind: footer, x: 120, y: 820, w: 840, h: 60,
+          align: center, valign: middle, font_size: 34, font_weight: 600,
+          color: "#94A3B8", max_lines: 1 }
+
+  # 3) 세로 피드 — 도달률 좋은 4:5 비율
+  portrait_feed:
+    name: "세로 피드 카드 (4:5)"
+    description: "1080x1350. 피드에서 더 큰 화면 점유. 정보형."
+    width: 1080
+    height: 1350
+    kind: single
+    background:
+      mode: gradient
+      from: "#0EA5E9"
+      to: "#0F172A"
+      angle: 160
+    zones:
+      - { name: topic,  bind: topic,  x: 110, y: 150, w: 860, h: 56,
+          align: left, valign: top, font_size: 34, font_weight: 700,
+          color: "#BAE6FD", letter_spacing: 2, max_lines: 1 }
+      - { name: title,  bind: title,  x: 110, y: 240, w: 860, h: 560,
+          align: left, valign: top, font_size: 92, font_weight: 800,
+          line_height: 1.16, max_lines: 6 }
+      - { name: body,   bind: body,   x: 110, y: 840, w: 860, h: 340,
+          align: left, valign: top, font_size: 40, font_weight: 400,
+          line_height: 1.45, color: "#E2E8F0E6", max_lines: 6 }
+      - { name: footer, bind: footer, x: 110, y: 1240, w: 860, h: 48,
+          align: left, valign: bottom, font_size: 30, font_weight: 600,
+          color: "#FFFFFFBF", max_lines: 1 }
+
+  # 4) 스토리 — 9:16 풀스크린
+  story:
+    name: "스토리 (9:16)"
+    description: "1080x1920. 스토리/릴스 커버. 중앙 제목 + 하단 CTA."
+    width: 1080
+    height: 1920
+    kind: single
+    background:
+      mode: gradient
+      from: "#F59E0B"
+      to: "#7C2D12"
+      angle: 160
+    zones:
+      - { name: topic,  bind: topic,  x: 120, y: 360, w: 840, h: 56,
+          align: center, valign: top, font_size: 36, font_weight: 700,
+          color: "#FEF3C7", letter_spacing: 3, max_lines: 1 }
+      - { name: title,  bind: title,  x: 120, y: 470, w: 840, h: 760,
+          align: center, valign: middle, font_size: 100, font_weight: 800,
+          line_height: 1.18, max_lines: 7 }
+      - { name: body,   bind: body,   x: 120, y: 1280, w: 840, h: 360,
+          align: center, valign: top, font_size: 42, font_weight: 400,
+          line_height: 1.45, color: "#FFF7EDE6", max_lines: 6 }
+      - { name: footer, bind: footer, x: 120, y: 1720, w: 840, h: 60,
+          align: center, valign: bottom, font_size: 34, font_weight: 700,
+          color: "#FFFFFF", max_lines: 1 }
+
+  # 5) 카드뉴스 캐러셀 — 다중 슬라이드
+  carousel_cardnews:
+    name: "카드뉴스 캐러셀"
+    description: "1080x1350 다중 슬라이드. 슬라이드별 제목·본문·불릿 + 페이지 표시."
+    width: 1080
+    height: 1350
+    kind: carousel
+    background:
+      mode: solid
+      color: "#111827"
+    zones:
+      - { name: page,   bind: page,   x: 840, y: 110, w: 144, h: 40,
+          align: right, valign: top, font_size: 28, font_weight: 700,
+          color: "#6B7280", max_lines: 1 }
+      - { name: title,  bind: title,  x: 96, y: 210, w: 888, h: 380,
+          align: left, valign: top, font_size: 78, font_weight: 800,
+          line_height: 1.18, color: "#F9FAFB", max_lines: 4 }
+      - { name: body,   bind: body,   x: 96, y: 610, w: 888, h: 260,
+          align: left, valign: top, font_size: 40, font_weight: 400,
+          line_height: 1.45, color: "#D1D5DBE6", max_lines: 4 }
+      - { name: bullets, bind: bullets, x: 96, y: 880, w: 888, h: 360,
+          align: left, valign: top, font_size: 40, font_weight: 500,
+          line_height: 1.45, color: "#E5E7EB", max_lines: 7 }
+      - { name: footer, bind: footer, x: 96, y: 1256, w: 888, h: 46,
+          align: left, valign: bottom, font_size: 28, font_weight: 600,
+          color: "#6B7280", max_lines: 1 }

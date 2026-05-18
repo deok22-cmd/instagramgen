@@ -1,0 +1,15 @@
+# ── Instagram Template Generator ─ dependencies ──────────────────────────────
+# Stage 1 (P0–P3): 콘텐츠 모델 + 텍스트/파일 소스 + SVG 렌더
+PyYAML>=6.0
+
+# P4: URL/기사 스크랩 (이후 단계에서 활성화)
+# requests>=2.31
+# trafilatura>=1.8
+
+# P5: AI 텍스트 확장/요약 (프로바이더 추상화)
+google-genai>=1.0     # 기본 프로바이더 (Gemini)
+openai>=1.30          # 대체 프로바이더 (settings: ai.provider=openai)
+
+# P8: SVG → PNG 래스터화 (Windows 안정 옵션은 P8에서 확정)
+# resvg-py>=0.1        # 우선 후보 (단일 바이너리, 한글 폰트 처리 양호)
+# cairosvg>=2.7        # 대안 (cairo DLL 필요 — Windows에서 까다로움)
